@@ -90,11 +90,11 @@ steps:
     scriptType: 'bash'
     inlineScript: 'az ml model deploy --name diabetes-prod-aks --ct $(ml-aks-name) -f model.json --ic config/inference-config.yml --dc config/deployment-config-aks.yml  --overwrite'
 
-#- task: AzureCLI@2
-#  displayName: 'Delete deployed service'
-#  inputs:
-#    azureSubscription: $(ml-ws-connection)
-#    workingDirectory: $(ml-path)
-#    scriptLocation: inlineScript
-#    scriptType: 'bash'
-#    inlineScript: 'az ml service delete -n diabetes-qa-aci'
+- task: AzureCLI@2
+  displayName: 'Delete deployed service'
+  inputs:
+    azureSubscription: $(ml-ws-connection)
+    workingDirectory: $(ml-path)
+    scriptLocation: inlineScript
+    scriptType: 'bash'
+    inlineScript: 'az ml service delete -n diabetes-qa-aci'
